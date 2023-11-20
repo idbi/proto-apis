@@ -24,7 +24,7 @@ service OwnerService {
     };
   };
 
-  rpc GetOwner(GetOwnerRequest) returns (entities.v1.Owner){
+  rpc GetOwner(GetOwnerRequest) returns (GetOwnerResponse){
     option (google.api.http) = {
       get: "/v1/owners/{id}"
     };
@@ -47,6 +47,10 @@ message CreateOwnerResponse {
 
 message GetOwnerRequest {
   string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message GetOwnerResponse {
+  entities.v1.Owner owner = 1;
 }
 
 message ListQueuesRequest {

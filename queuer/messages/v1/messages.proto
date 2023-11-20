@@ -16,14 +16,14 @@ import "queuer/entities/v1/messages.proto";
 option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 
 service MessageService {
-  rpc ConfirmMessage(ConfirmMessageRequest) returns (google.protobuf.Empty) {
+  rpc ConfirmMessage(ConfirmMessageRequest) returns (ConfirmMessageResponse) {
     option (google.api.http) = {
       post: "/v1/queues/{queue_id}/messages/{message_id}:confirm"
       body: "*"
     };
   }
 
-  rpc GetMessages(stream GetMessagesRequest) returns (stream entities.v1.Message) {
+  rpc GetMessages(stream GetMessagesRequest) returns (stream GetMessagesResponse) {
     option (google.api.http) = {
       get: "/v1/queues/{queue_id}/messages"
     };
@@ -35,7 +35,15 @@ message GetMessagesRequest {
   bool ready = 2;
 }
 
+message GetMessagesResponse {
+  entities.v1.Message message = 1;
+}
+
 message ConfirmMessageRequest {
   string queue_id = 1 [(validate.rules).string.uuid = true];
   string message_id = 2 [(validate.rules).string.uuid = true];
+}
+
+message ConfirmMessageResponse {
+  bool success = 1;
 }

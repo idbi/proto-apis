@@ -11,7 +11,7 @@ import "validate/validate.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/goproto/queuer/api/entities/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
 message HardwareStats {
   uint64 total_cpu = 1;

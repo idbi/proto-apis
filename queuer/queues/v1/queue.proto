@@ -24,18 +24,18 @@ service QueueService {
       body: "*"
     };
   }
-  rpc GetQueue(GetQueueRequest) returns (entities.v1.Queue) {
+  rpc GetQueue(GetQueueRequest) returns (GetQueueResponse) {
     option (google.api.http) = {
       get: "/v1/queues/{id}"
     };
   }
-  rpc DeleteQueue(DeleteQueueRequest) returns (google.protobuf.Empty) {
+  rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse) {
     option (google.api.http) = {
       delete: "/v1/queues/{id}"
     };
   }
 
-  rpc FlushQueue(FlushQueueRequest) returns (google.protobuf.Empty) {
+  rpc FlushQueue(FlushQueueRequest) returns (FlushQueueResponse) {
     option (google.api.http) = {
       post: "/v1/queues/{id}:flush"
     };
@@ -48,7 +48,7 @@ service QueueService {
     };
   }
 
-  rpc ClientStats(stream entities.v1.Stats) returns (google.protobuf.Empty) {
+  rpc ClientStats(stream ClientStatsRequest) returns (ClientStatsResponse) {
     option (google.api.http) = {
       post: "/v1/queues/{id}/clients:stats"
       body: "*"
@@ -69,12 +69,24 @@ message GetQueueRequest {
   string id = 1 [(validate.rules).string.uuid = true];
 }
 
+message GetQueueResponse {
+  entities.v1.Queue queue = 1;
+}
+
 message FlushQueueRequest {
   string id = 1 [(validate.rules).string.uuid = true];
 }
 
+message FlushQueueResponse {
+  bool success = 1;
+}
+
 message DeleteQueueRequest {
   string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message DeleteQueueResponse {
+  bool success = 1;
 }
 
 message PublishMessageRequest {
@@ -86,3 +98,11 @@ message PublishMessageResponse {
   string message_id = 1;
 }
 
+message ClientStatsRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.Stats stats = 2;
+}
+
+message ClientStatsResponse {
+  bool success = 1;
+}
