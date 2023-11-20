@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package messages.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "entities/v1/messages.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/iot-queuer/api/messages/v1;v1";
+
+service MessageService {
+  rpc ConfirmMessage(ConfirmMessageRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/v1/queues/{queue_id}/messages/{message_id}:confirm"
+      body: "*"
+    };
+  }
+
+  rpc GetMessages(stream GetMessagesRequest) returns (stream entities.v1.Message) {
+    option (google.api.http) = {
+      get: "/v1/queues/{queue_id}/messages"
+    };
+  }
+}
+
+message GetMessagesRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  bool ready = 2;
+}
+
+message ConfirmMessageRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string message_id = 2 [(validate.rules).string.uuid = true];
+}

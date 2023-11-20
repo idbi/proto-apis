@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package entities.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "entities/v1/owner.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/iot-queuer/api/entities/v1;v1";
+
+
+message Message {
+  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 100}];
+  string queue_id = 2 [(validate.rules).string = {min_len: 1, max_len: 100}];
+  string payload = 3 [(validate.rules).string = {min_len: 1, max_len: 1000}];
+  Priority priority = 4;
+}
+
+enum Priority {
+  PRIORITY_UNSPECIFIED = 0;
+  PRIORITY_LOW = 1;
+  PRIORITY_MEDIUM = 2;
+  PRIORITY_HIGH = 3;
+}

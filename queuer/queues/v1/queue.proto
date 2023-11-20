@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package queues.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "entities/v1/queue.proto";
+import "entities/v1/messages.proto";
+import "entities/v1/status.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/iot-queuer/api/queues/v1;v1";
+
+service QueueService {
+  rpc CreateQueue(CreateQueueRequest) returns (CreateQueueResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues"
+      body: "*"
+    };
+  }
+  rpc GetQueue(GetQueueRequest) returns (entities.v1.Queue) {
+    option (google.api.http) = {
+      get: "/v1/queues/{id}"
+    };
+  }
+  rpc DeleteQueue(DeleteQueueRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/queues/{id}"
+    };
+  }
+
+  rpc FlushQueue(FlushQueueRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}:flush"
+    };
+  }
+
+  rpc PublishMessage(PublishMessageRequest) returns (PublishMessageResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}:publish"
+      body: "*"
+    };
+  }
+
+  rpc ClientStats(stream entities.v1.Stats) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}/clients:stats"
+      body: "*"
+    };
+  }
+}
+
+message CreateQueueRequest {
+  string name = 1 [(validate.rules).string.min_len = 3];
+  string owner_id = 2 [(validate.rules).string.uuid = true];
+}
+
+message CreateQueueResponse {
+  entities.v1.Queue queue = 1;
+}
+
+message GetQueueRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message FlushQueueRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message DeleteQueueRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message PublishMessageRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.Message message = 2;
+}
+
+message PublishMessageResponse {
+  string message_id = 1;
+}
+

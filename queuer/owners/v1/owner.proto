@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package owners.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "entities/v1/owner.proto";
+import "entities/v1/queue.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/iot-queuer/api/owners/v1;v1";
+
+service OwnerService {
+  rpc CreateOwner(CreateOwnerRequest) returns (CreateOwnerResponse){
+    option (google.api.http) = {
+      post: "/v1/owners"
+      body: "*"
+    };
+  };
+
+  rpc GetOwner(GetOwnerRequest) returns (entities.v1.Owner){
+    option (google.api.http) = {
+      get: "/v1/owners/{id}"
+    };
+  };
+
+  rpc ListQueues(ListQueuesRequest) returns (ListQueuesResponse) {
+    option (google.api.http) = {
+      get: "/v1/queues"
+    };
+  }
+}
+
+message CreateOwnerRequest {
+  string name = 1 [(validate.rules).string.min_len = 1];
+}
+
+message CreateOwnerResponse {
+  entities.v1.Owner owner = 1;
+}
+
+message GetOwnerRequest {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message ListQueuesRequest {
+  string owner_id = 1 [(validate.rules).string.uuid = true];
+  int32 page_size = 2 [(validate.rules).int32.gt = 0];
+  string page_token = 3;
+}
+
+message ListQueuesResponse {
+  repeated entities.v1.Queue queues = 1;
+}
