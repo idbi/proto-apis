@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package entities.v1;
+package queuer.entities.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -11,7 +11,7 @@ import "validate/validate.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/iot-queuer/api/entities/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
 message Owner {
   string id = 1 [(validate.rules).string = {min_len: 1, max_len: 100}];
