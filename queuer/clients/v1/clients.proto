@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package queuer.clients.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/messages.proto";
+import "queuer/entities/v1/stats.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/goproto/queuer/clients/v1;v1";
+
+service ClientService {
+  rpc StoreClientStats(stream StoreClientStatsRequest) returns (StoreClientStatsResponse) {
+    option (google.api.http) = {
+      post: "/v1/clients/{client_id}/stats"
+      body: "*"
+    };
+  }
+}
+
+message StoreClientStatsRequest {
+  string client_id = 1;
+  entities.v1.Stats stats = 1;
+}
+
+message StoreClientStatsResponse {
+  bool success = 1;
+}
