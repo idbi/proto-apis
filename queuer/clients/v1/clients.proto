@@ -28,7 +28,7 @@ service ClientService {
 
 message StoreClientStatsRequest {
   string client_id = 1;
-  entities.v1.Stats stats = 1;
+  entities.v1.Stats stats = 2;
 }
 
 message StoreClientStatsResponse {
