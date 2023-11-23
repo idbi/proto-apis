@@ -47,13 +47,6 @@ service QueueService {
       body: "*"
     };
   }
-
-  rpc ClientStats(stream ClientStatsRequest) returns (ClientStatsResponse) {
-    option (google.api.http) = {
-      post: "/v1/queues/{id}/clients:stats"
-      body: "*"
-    };
-  }
 }
 
 message CreateQueueRequest {
@@ -96,13 +89,4 @@ message PublishMessageRequest {
 
 message PublishMessageResponse {
   string message_id = 1;
-}
-
-message ClientStatsRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.Stats stats = 2;
-}
-
-message ClientStatsResponse {
-  bool success = 1;
 }
