@@ -19,7 +19,7 @@ option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 message Command {
   string id = 1 [(validate.rules).string.uuid = true];
   CommandAction action = 2;
-  string payload = 3;
+  bytes payload = 3;
 }
 
 enum CommandAction {
