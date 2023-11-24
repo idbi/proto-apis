@@ -17,4 +17,21 @@ option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
 message Client {
   string id = 1 [(validate.rules).string = {min_len: 1}];
+
+  HostInfo host = 2;
+  ProcessInfo process = 3;
+}
+
+message HostInfo {
+  string os = 1 [(validate.rules).string = {min_len: 1}];
+  string arch = 2 [(validate.rules).string = {min_len: 1}];
+
+  string ip = 3 [(validate.rules).string = {min_len: 1}];
+  string hostname = 4 [(validate.rules).string = {min_len: 1}];
+  string boot_time = 5 [(validate.rules).string = {min_len: 1}];
+}
+
+message ProcessInfo{
+  string pid = 1 [(validate.rules).string = {min_len: 1}];
+  string uid = 2 [(validate.rules).string = {min_len: 1}];
 }

@@ -9,6 +9,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
+import "queuer/entities/v1/client.proto";
 import "queuer/entities/v1/queue.proto";
 import "queuer/entities/v1/messages.proto";
 import "queuer/entities/v1/stats.proto";
@@ -18,12 +19,26 @@ import "queuer/entities/v1/stats.proto";
 option go_package = "github.com/gsols/goproto/queuer/clients/v1;v1";
 
 service ClientService {
+  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
+    option (google.api.http) = {
+      post: "/v1/clients"
+      body: "*"
+    };
+  }
   rpc StoreClientStats(stream StoreClientStatsRequest) returns (StoreClientStatsResponse) {
     option (google.api.http) = {
       post: "/v1/clients/{client_id}/stats"
       body: "*"
     };
   }
+}
+
+message RegisterClientRequest {
+  entities.v1.Client client = 1;
+}
+
+message RegisterClientResponse {
+  bool success = 1;
 }
 
 message StoreClientStatsRequest {

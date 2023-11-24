@@ -13,19 +13,33 @@ import "validate/validate.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
-message HardwareStats {
-  uint64 total_cpu = 1;
-  uint64 free_cpu = 2;
-  uint64 total_ram = 3;
-  uint64 free_ram = 4;
+message CPUStats{
+  uint64 user = 1;
+  uint64 system = 2;
+  uint64 idle = 3;
+  uint64 total = 4;
 }
 
-message NetworkStats {
-  string ip = 1;
-  uint64 speed = 2;
+message MemoryStats{
+  uint64 total = 1;
+  uint64 used = 2;
+  uint64 available = 3;
+  uint64 free = 4;
+}
+
+message LoadStats{
+  float one = 1;
+  float five = 2;
+  float fifteen = 3;
+}
+
+message NetworkSpeed{
+  float download = 1;
+  float upload = 2;
 }
 
 message Stats {
-  HardwareStats stats = 1;
-  NetworkStats network = 2;
+  CPUStats cpu = 1;
+  LoadStats load = 2;
+  MemoryStats memory = 3;
 }
