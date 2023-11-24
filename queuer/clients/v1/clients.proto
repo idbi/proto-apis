@@ -33,7 +33,7 @@ service ClientService {
     };
   }
 
-  rpc GetCommands(GetCommandsRequest) returns (stream GetCommandsResponse) {
+  rpc SubscribeToCommands(SubscribeToCommandsRequest) returns (stream SubscribeToCommandsResponse) {
     option (google.api.http) = {
       get: "/v1/clients/{client_id}/commands"
     };
@@ -64,12 +64,12 @@ message PublishClientStatsResponse {
   bool success = 1;
 }
 
-message GetCommandsRequest {
+message SubscribeToCommandsRequest {
   string client_id = 1;
 }
 
-message GetCommandsResponse {
-  repeated entities.v1.Command commands = 1;
+message SubscribeToCommandsResponse {
+  entities.v1.Command commands = 1;
 }
 
 message AckCommandRequest {
