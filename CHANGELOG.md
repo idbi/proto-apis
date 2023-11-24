@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.7](https://github.com/gsols/proto-apis/compare/v0.1.6...v0.1.7) (2023-11-24)
+
+
+### Features
+
+* change message struct type ([bf87d9c](https://github.com/gsols/proto-apis/commit/bf87d9c01fb0868a4f71020b995f030b25a7003e))
+* change string to bytes payload ([f3f7b99](https://github.com/gsols/proto-apis/commit/f3f7b994730fa154a8524e4b571e3fc4d9cc2743))
+* change struct ([a3c685c](https://github.com/gsols/proto-apis/commit/a3c685c0828c48d5522d4e64577092f58fb221ed))
+
 ## 0.1.6 (2023-11-24)
 
 
