@@ -1,5 +1,5 @@
 # based on https://github.com/mvdan/github-actions-golang
-name: Generate
+name: Lint
 
 on:
   # Scan changed files in PRs, block on new issues only (existing issues ignored)
