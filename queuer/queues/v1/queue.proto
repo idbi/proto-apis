@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "queuer/entities/v1/queue.proto";
-import "queuer/entities/v1/messages.proto";
+import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/stats.proto";
 
 // Defines the import path that should be used to import the generated package,

@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package queuer.entities.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "queuer/entities/v1/owner.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
+
+
+message Command {
+  string id = 1 [(validate.rules).string.uuid = true];
+  CommandAction action = 2;
+  string payload = 3;
+}
+
+enum CommandAction {
+  ACTION_UNKNOWN = 0;
+  ACTION_REQ_RESTART_SERVICE = 1;
+  ACTION_REQ_REBOOT_SYSTEM = 2;
+  ACTION_REQ_NETWORK_SPEED = 3;
+  ACTION_REQ_UPDATE_SERVICE = 4;
+}
+
+enum CommandStatus {
+  COMMAND_STATUS_UNKNOWN = 0;
+  COMMAND_STATUS_PENDING = 1;
+  COMMAND_STATUS_IN_PROGRESS = 2;
+  COMMAND_STATUS_COMPLETED = 3;
+  COMMAND_STATUS_FAILED = 4;
+}
