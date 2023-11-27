@@ -48,6 +48,12 @@ service ClientService {
       body: "*"
     };
   }
+
+  rpc GetSubscribedQueues(GetSubscribedQueuesRequest) returns (GetSubscribedQueuesResponse) {
+    option (google.api.http) = {
+      get: "/v1/clients/{client_id}/queues"
+    };
+  }
 }
 
 

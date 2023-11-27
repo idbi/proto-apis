@@ -54,4 +54,10 @@ message AckCommandResponse {
   bool success = 1;
 }
 
+message GetSubscribedQueuesRequest{
+  string client_id = 1;
+}
 
+message GetSubscribedQueuesResponse{
+  repeated entities.v1.Queue queues = 1;
+}
