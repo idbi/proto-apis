@@ -20,3 +20,10 @@ message Queue {
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 100}];
   Owner owner = 3;
 }
+
+enum QueueState {
+  QUEUE_STATE_UNSPECIFIED = 0;
+  QUEUE_STATE_ACTIVE = 1;
+  QUEUE_STATE_INACTIVE = 2;
+  QUEUE_STATE_PAUSED = 3;
+}

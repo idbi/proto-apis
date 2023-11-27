@@ -62,4 +62,11 @@ service QueueService {
       delete: "/v1/queues/{id}/messages"
     };
   }
+
+  rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {
+    option (google.api.http) = {
+      patch: "/v1/queues/{id}:state"
+      body: "*"
+    };
+  }
 }

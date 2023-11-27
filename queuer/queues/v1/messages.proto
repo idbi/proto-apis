@@ -74,3 +74,12 @@ message UnsubscribeRequest {
 message UnsubscribeResponse {
   bool success = 1;
 }
+
+message UpdateStateRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.QueueState state = 2;
+}
+
+message UpdateStateResponse {
+  bool success = 1;
+}
