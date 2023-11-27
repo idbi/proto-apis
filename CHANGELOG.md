@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.8](https://github.com/gsols/proto-apis/compare/v0.1.7...v0.1.8) (2023-11-27)
+
+
+### Features
+
+* add ability to pause queue ([300cda4](https://github.com/gsols/proto-apis/commit/300cda4e7a349d82470cc8ca38a1f527418fdacf))
+* add get next message rpc ([1a80f82](https://github.com/gsols/proto-apis/commit/1a80f824c84c50b0ea1a39b60bfcc86ac70b122b))
+* fix typo ([e29aa77](https://github.com/gsols/proto-apis/commit/e29aa7758adf4e52d27dda395384564110bbdc9d))
+* update structure ([d7ee69b](https://github.com/gsols/proto-apis/commit/d7ee69b7d995b72096ffa613de470ed4a4b7c71d))
+
 ## [0.1.7](https://github.com/gsols/proto-apis/compare/v0.1.6...v0.1.7) (2023-11-24)
 
 
