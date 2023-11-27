@@ -23,6 +23,12 @@ service MessageService {
     };
   }
 
+  rpc GetNextMessage(GetNextMessageRequest) returns (GetNextMessageResponse) {
+    option (google.api.http) = {
+      get: "/v1/queues/{queue_id}/messages}"
+    };
+  }
+
   rpc GetMessages(stream GetMessagesRequest) returns (stream GetMessagesResponse) {
     option (google.api.http) = {
       get: "/v1/queues/{queue_id}/messages"
@@ -36,6 +42,14 @@ message GetMessagesRequest {
 }
 
 message GetMessagesResponse {
+  entities.v1.Message message = 1;
+}
+
+message GetNextMessageRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message GetNextMessageResponse {
   entities.v1.Message message = 1;
 }
 
