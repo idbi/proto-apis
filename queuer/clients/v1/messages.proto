@@ -19,34 +19,6 @@ import "queuer/entities/v1/stats.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/clients/v1;v1";
 
-service ClientService {
-  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
-    option (google.api.http) = {
-      post: "/v1/clients"
-      body: "*"
-    };
-  }
-  rpc PublishClientStats(stream PublishClientStatsRequest) returns (PublishClientStatsResponse) {
-    option (google.api.http) = {
-      post: "/v1/clients/{client_id}/stats"
-      body: "*"
-    };
-  }
-
-  rpc SubscribeToCommands(SubscribeToCommandsRequest) returns (stream SubscribeToCommandsResponse) {
-    option (google.api.http) = {
-      get: "/v1/clients/{client_id}/commands"
-    };
-  }
-
-  rpc AckCommand(AckCommandRequest) returns (AckCommandResponse) {
-    option (google.api.http) = {
-      post: "/v1/clients/{client_id}/commands/{command_id}:ack"
-      body: "*"
-    };
-  }
-}
-
 message RegisterClientRequest {
   entities.v1.Client client = 1;
 }

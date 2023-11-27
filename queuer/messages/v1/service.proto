@@ -11,23 +11,17 @@ import "validate/validate.proto";
 
 import "queuer/entities/v1/message.proto";
 
+import "queuer/messages/v1/messages.proto";
+
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 
-message GetNextRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
-}
-
-message GetNextResponse {
-  entities.v1.Message message = 1;
-}
-
-message ConfirmRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
-  string message_id = 2 [(validate.rules).string.uuid = true];
-}
-
-message ConfirmResponse {
-  bool success = 1;
+service MessageService {
+  rpc Confirm(ConfirmRequest) returns (ConfirmResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{queue_id}/messages/{message_id}:confirm"
+      body: "*"
+    };
+  }
 }

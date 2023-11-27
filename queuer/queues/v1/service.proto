@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package queuer.queues.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/message.proto";
+import "queuer/entities/v1/stats.proto";
+
+import "queuer/queues/v1/messages.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/gsols/goproto/queuer/queues/v1;v1";
+
+service QueueService {
+  rpc CreateQueue(CreateQueueRequest) returns (CreateQueueResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues"
+      body: "*"
+    };
+  }
+  rpc GetQueue(GetQueueRequest) returns (GetQueueResponse) {
+    option (google.api.http) = {
+      get: "/v1/queues/{id}"
+    };
+  }
+  rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse) {
+    option (google.api.http) = {
+      delete: "/v1/queues/{id}"
+    };
+  }
+
+  rpc FlushQueue(FlushQueueRequest) returns (FlushQueueResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}:flush"
+    };
+  }
+
+  rpc PublishMessage(PublishMessageRequest) returns (PublishMessageResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}:publish"
+      body: "*"
+    };
+  }
+
+  rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{id}/messages"
+      body: "*"
+    };
+  }
+
+  rpc Unsubscribe(UnsubscribeRequest) returns (UnsubscribeResponse) {
+    option (google.api.http) = {
+      delete: "/v1/queues/{id}/messages"
+    };
+  }
+}

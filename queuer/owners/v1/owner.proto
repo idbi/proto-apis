@@ -12,6 +12,8 @@ import "validate/validate.proto";
 import "queuer/entities/v1/owner.proto";
 import "queuer/entities/v1/queue.proto";
 
+import "queuer/owners/v1/messages.proto";
+
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/owners/v1;v1";
@@ -35,30 +37,4 @@ service OwnerService {
       get: "/v1/queues"
     };
   }
-}
-
-message CreateOwnerRequest {
-  string name = 1 [(validate.rules).string.min_len = 1];
-}
-
-message CreateOwnerResponse {
-  entities.v1.Owner owner = 1;
-}
-
-message GetOwnerRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
-}
-
-message GetOwnerResponse {
-  entities.v1.Owner owner = 1;
-}
-
-message ListQueuesRequest {
-  string owner_id = 1 [(validate.rules).string.uuid = true];
-  int32 page_size = 2 [(validate.rules).int32.gt = 0];
-  string page_token = 3;
-}
-
-message ListQueuesResponse {
-  repeated entities.v1.Queue queues = 1;
 }
