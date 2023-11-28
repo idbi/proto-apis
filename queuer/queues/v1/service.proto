@@ -28,45 +28,58 @@ service QueueService {
   }
   rpc GetQueue(GetQueueRequest) returns (GetQueueResponse) {
     option (google.api.http) = {
-      get: "/v1/queues/{id}"
+      get: "/v1/queues/{queue_id}"
     };
   }
   rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse) {
     option (google.api.http) = {
-      delete: "/v1/queues/{id}"
+      delete: "/v1/queues/{queue_id}"
     };
   }
 
   rpc FlushQueue(FlushQueueRequest) returns (FlushQueueResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{id}:flush"
+      post: "/v1/queues/{queue_id}:flush"
     };
   }
 
   rpc PublishMessage(PublishMessageRequest) returns (PublishMessageResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{id}:publish"
+      post: "/v1/queues/{queue_id}:publish"
       body: "*"
     };
   }
 
   rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{id}/messages"
+      post: "/v1/queues/{queue_id}/messages"
       body: "*"
     };
   }
 
   rpc Unsubscribe(UnsubscribeRequest) returns (UnsubscribeResponse) {
     option (google.api.http) = {
-      delete: "/v1/queues/{id}/messages"
+      delete: "/v1/queues/{queue_id}/messages"
     };
   }
 
   rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {
     option (google.api.http) = {
-      patch: "/v1/queues/{id}:state"
+      patch: "/v1/queues/{queue_id}:state"
       body: "*"
+    };
+  }
+
+  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
+    option (google.api.http) = {
+      post: "/v1/queues/{queue_id}/clients"
+      body: "*"
+    };
+  }
+
+  rpc UnregisterClient(UnregisterClientRequest) returns (UnregisterClientResponse) {
+    option (google.api.http) = {
+      delete: "/v1/queues/{queue_id}/clients/{client_id}"
     };
   }
 }

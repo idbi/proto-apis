@@ -27,7 +27,7 @@ message CreateQueueResponse {
 }
 
 message GetQueueRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
+  string queue_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message GetQueueResponse {
@@ -35,7 +35,7 @@ message GetQueueResponse {
 }
 
 message FlushQueueRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
+  string queue_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message FlushQueueResponse {
@@ -43,7 +43,7 @@ message FlushQueueResponse {
 }
 
 message DeleteQueueRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
+  string queue_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message DeleteQueueResponse {
@@ -60,7 +60,7 @@ message PublishMessageResponse {
 }
 
 message SubscribeRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
+  string queue_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message SubscribeResponse {
@@ -82,4 +82,22 @@ message UpdateStateRequest {
 
 message UpdateStateResponse {
   bool success = 1;
+}
+
+message RegisterClientRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string client_id = 2 [(validate.rules).string = {min_len: 1}];
+}
+
+message RegisterClientResponse {
+  string success = 1;
+}
+
+message UnregisterClientRequest {
+  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string client_id = 2 [(validate.rules).string = {min_len: 1}];
+}
+
+message UnregisterClientResponse {
+  string success = 1;
 }
