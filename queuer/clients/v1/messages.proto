@@ -21,6 +21,7 @@ option go_package = "github.com/gsols/goproto/queuer/clients/v1;v1";
 
 message RegisterClientRequest {
   entities.v1.Client client = 1;
+  string owner_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message RegisterClientResponse {
