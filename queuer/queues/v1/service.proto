@@ -70,6 +70,12 @@ service QueueService {
     };
   }
 
+  rpc GetClients(GetClientsRequest) returns (GetClientsResponse) {
+    option (google.api.http) = {
+      get: "/v1/queues/{queue_id}/clients"
+    };
+  }
+
   rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
     option (google.api.http) = {
       post: "/v1/queues/{queue_id}/clients"

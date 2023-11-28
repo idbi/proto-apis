@@ -27,6 +27,12 @@ message RegisterClientResponse {
   bool success = 1;
 }
 
+message GetClientsRequest {}
+
+message GetClientsResponse {
+  repeated entities.v1.Client clients = 1;
+}
+
 message PublishClientStatsRequest {
   string client_id = 1;
   entities.v1.Stats stats = 2;

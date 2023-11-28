@@ -29,6 +29,13 @@ service ClientService {
       body: "*"
     };
   }
+
+  rpc GetClients(GetClientsRequest) returns (GetClientsResponse) {
+    option (google.api.http) = {
+      get: "/v1/clients"
+    };
+  }
+
   rpc PublishClientStats(stream PublishClientStatsRequest) returns (PublishClientStatsResponse) {
     option (google.api.http) = {
       post: "/v1/clients/{client_id}/stats"
