@@ -91,7 +91,7 @@ message RegisterClientRequest {
 }
 
 message RegisterClientResponse {
-  string success = 1;
+  bool success = 1;
 }
 
 message GetClientsRequest {
@@ -108,5 +108,5 @@ message UnregisterClientRequest {
 }
 
 message UnregisterClientResponse {
-  string success = 1;
+  bool success = 1;
 }
