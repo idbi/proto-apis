@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.1.9](https://github.com/gsols/proto-apis/compare/v0.1.8...v0.1.9) (2023-11-29)
+
+
+### Features
+
+* add get registered subscribed queues ([c802e11](https://github.com/gsols/proto-apis/commit/c802e11e72687c90b00a5d54beb804702f4c90cc))
+* add owner_id to register process ([3c4fbe7](https://github.com/gsols/proto-apis/commit/3c4fbe7af59c3f5bc00afde058456597af488416))
+* add register process ([a031610](https://github.com/gsols/proto-apis/commit/a031610459aea36398a318191510c453e9aaf5ab))
+* get registered clients ([f267425](https://github.com/gsols/proto-apis/commit/f2674258492afca468e70deb07aa4fdd0ab3baf7))
+* remove unused rpc ([262d7e4](https://github.com/gsols/proto-apis/commit/262d7e422e5f0d2275065b439f8891f53b06f2d6))
+
+
+### Bug Fixes
+
+* wrong type ([b03cc8a](https://github.com/gsols/proto-apis/commit/b03cc8aa09ca69de8c70f77f94107b6e0b9c53e7))
+
 ## [0.1.8](https://github.com/gsols/proto-apis/compare/v0.1.7...v0.1.8) (2023-11-27)
 
 
