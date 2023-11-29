@@ -68,14 +68,6 @@ message SubscribeResponse {
   entities.v1.Message message = 1;
 }
 
-message UnsubscribeRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
-}
-
-message UnsubscribeResponse {
-  bool success = 1;
-}
-
 message UpdateStateRequest {
   string queue_id = 1 [(validate.rules).string.uuid = true];
   entities.v1.QueueState state = 2;
