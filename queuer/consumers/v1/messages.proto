@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package queuer.clients.v1;
+package queuer.consumers.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -9,7 +9,7 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-import "queuer/entities/v1/client.proto";
+import "queuer/entities/v1/consumer.proto";
 import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/command.proto";
@@ -17,34 +17,34 @@ import "queuer/entities/v1/stats.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/goproto/queuer/clients/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
 
-message RegisterClientRequest {
-  entities.v1.Client client = 1;
+message RegisterConsumerRequest {
+  entities.v1.Consumer consumer = 1;
   string owner_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message RegisterClientResponse {
+message RegisterConsumerResponse {
   bool success = 1;
 }
 
-message GetClientsRequest {}
+message GetConsumersRequest {}
 
-message GetClientsResponse {
-  repeated entities.v1.Client clients = 1;
+message GetConsumersResponse {
+  repeated entities.v1.Consumer consumers = 1;
 }
 
-message PublishClientStatsRequest {
-  string client_id = 1 [(validate.rules).string.uuid = true];
+message PublishConsumerStatsRequest {
+  string consumer_id = 1 [(validate.rules).string.uuid = true];
   entities.v1.Stats stats = 2;
 }
 
-message PublishClientStatsResponse {
+message PublishConsumerStatsResponse {
   bool success = 1;
 }
 
 message SubscribeToCommandsRequest {
-  string client_id = 1 [(validate.rules).string.uuid = true];
+  string consumer_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message SubscribeToCommandsResponse {
@@ -52,7 +52,7 @@ message SubscribeToCommandsResponse {
 }
 
 message AckCommandRequest {
-  string client_id = 1 [(validate.rules).string.uuid = true];
+  string consumer_id = 1 [(validate.rules).string.uuid = true];
   string command_id = 2 [(validate.rules).string.uuid = true];
   entities.v1.CommandStatus status = 3;
 }
@@ -62,7 +62,7 @@ message AckCommandResponse {
 }
 
 message GetSubscribedStreamsRequest{
-  string client_id = 1[(validate.rules).string.uuid = true];
+  string consumer_id = 1[(validate.rules).string.uuid = true];
 }
 
 message GetSubscribedStreamsResponse{

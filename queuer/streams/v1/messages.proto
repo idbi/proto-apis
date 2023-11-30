@@ -12,7 +12,7 @@ import "validate/validate.proto";
 import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/stats.proto";
-import "queuer/entities/v1/client.proto";
+import "queuer/entities/v1/consumer.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
@@ -77,28 +77,28 @@ message UpdateStateResponse {
   bool success = 1;
 }
 
-message RegisterClientRequest {
+message RegisterConsumerRequest {
   string stream_id = 1 [(validate.rules).string.uuid = true];
-  string client_id = 2 [(validate.rules).string.uuid = true];
+  string consumer_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message RegisterClientResponse {
+message RegisterConsumerResponse {
   bool success = 1;
 }
 
-message GetClientsRequest {
+message GetConsumersRequest {
   string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
-message GetClientsResponse {
-  repeated entities.v1.Client clients = 1;
+message GetConsumersResponse {
+  repeated entities.v1.Consumer consumers = 1;
 }
 
-message UnregisterClientRequest {
+message UnregisterConsumerRequest {
   string stream_id = 1 [(validate.rules).string.uuid = true];
-  string client_id = 2 [(validate.rules).string.uuid = true];
+  string consumer_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message UnregisterClientResponse {
+message UnregisterConsumerResponse {
   bool success = 1;
 }

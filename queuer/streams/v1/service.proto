@@ -64,22 +64,22 @@ service StreamService {
     };
   }
 
-  rpc GetClients(GetClientsRequest) returns (GetClientsResponse) {
+  rpc GetConsumers(GetConsumersRequest) returns (GetConsumersResponse) {
     option (google.api.http) = {
-      get: "/v1/streams/{stream_id}/clients"
+      get: "/v1/streams/{stream_id}/consumers"
     };
   }
 
-  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
+  rpc RegisterConsumer(RegisterConsumerRequest) returns (RegisterConsumerResponse) {
     option (google.api.http) = {
-      post: "/v1/streams/{stream_id}/clients"
+      post: "/v1/streams/{stream_id}/consumers"
       body: "*"
     };
   }
 
-  rpc UnregisterClient(UnregisterClientRequest) returns (UnregisterClientResponse) {
+  rpc UnregisterConsumer(UnregisterConsumerRequest) returns (UnregisterConsumerResponse) {
     option (google.api.http) = {
-      delete: "/v1/streams/{stream_id}/clients/{client_id}"
+      delete: "/v1/streams/{stream_id}/consumers/{consumer_id}"
     };
   }
 }

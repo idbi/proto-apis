@@ -15,7 +15,7 @@ import "queuer/entities/v1/owner.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
-message Client {
+message Consumer {
   string id = 1 [(validate.rules).string.uuid = true];
 
   HostInfo host = 2;
