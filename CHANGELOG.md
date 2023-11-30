@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.10](https://github.com/gsols/proto-apis/compare/v0.1.9...v0.1.10) (2023-11-30)
+
+
+### Features
+
+* change validation rules ([529647b](https://github.com/gsols/proto-apis/commit/529647bb8d624bbd1dcda874b8f1b81f1b43641a))
+* remove redundant keys ([80ca6ef](https://github.com/gsols/proto-apis/commit/80ca6ef65a07b357188d039294da153ef94a9cc6))
+* replace queues with streams ([3b3573a](https://github.com/gsols/proto-apis/commit/3b3573a21a7267e5f287e76bcdc7542ead3599ad))
+
 ## [0.1.9](https://github.com/gsols/proto-apis/compare/v0.1.8...v0.1.9) (2023-11-29)
 
 
