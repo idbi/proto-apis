@@ -16,7 +16,7 @@ import "queuer/entities/v1/owner.proto";
 option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
 message Queue {
-  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 100}];
+  string id = 1 [(validate.rules).string.uuid = true];
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 100}];
 }
 

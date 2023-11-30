@@ -35,7 +35,7 @@ message GetClientsResponse {
 }
 
 message PublishClientStatsRequest {
-  string client_id = 1;
+  string client_id = 1 [(validate.rules).string.uuid = true];
   entities.v1.Stats stats = 2;
 }
 
@@ -44,7 +44,7 @@ message PublishClientStatsResponse {
 }
 
 message SubscribeToCommandsRequest {
-  string client_id = 1;
+  string client_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message SubscribeToCommandsResponse {
@@ -52,8 +52,8 @@ message SubscribeToCommandsResponse {
 }
 
 message AckCommandRequest {
-  string client_id = 1;
-  string command_id = 2;
+  string client_id = 1 [(validate.rules).string.uuid = true];
+  string command_id = 2 [(validate.rules).string.uuid = true];
   entities.v1.CommandStatus status = 3;
 }
 
@@ -62,7 +62,7 @@ message AckCommandResponse {
 }
 
 message GetSubscribedQueuesRequest{
-  string client_id = 1;
+  string client_id = 1[(validate.rules).string.uuid = true];
 }
 
 message GetSubscribedQueuesResponse{

@@ -57,7 +57,7 @@ message PublishMessageRequest {
 }
 
 message PublishMessageResponse {
-  string message_id = 1;
+  string message_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message SubscribeRequest {
@@ -79,7 +79,7 @@ message UpdateStateResponse {
 
 message RegisterClientRequest {
   string queue_id = 1 [(validate.rules).string.uuid = true];
-  string client_id = 2 [(validate.rules).string = {min_len: 1}];
+  string client_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message RegisterClientResponse {
@@ -96,7 +96,7 @@ message GetClientsResponse {
 
 message UnregisterClientRequest {
   string queue_id = 1 [(validate.rules).string.uuid = true];
-  string client_id = 2 [(validate.rules).string = {min_len: 1}];
+  string client_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message UnregisterClientResponse {

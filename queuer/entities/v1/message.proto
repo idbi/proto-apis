@@ -17,7 +17,7 @@ option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
 
 message Message {
-  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 100}];
+  string id = 1 [(validate.rules).string.uuid = true];
   bytes payload = 2;
   Priority priority = 3;
 }
