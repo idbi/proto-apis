@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "queuer/entities/v1/owner.proto";
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
@@ -25,19 +25,19 @@ message CreateOwnerResponse {
 }
 
 message GetOwnerRequest {
-  string id = 1 [(validate.rules).string.uuid = true];
+  string owner_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message GetOwnerResponse {
   entities.v1.Owner owner = 1;
 }
 
-message ListQueuesRequest {
+message ListStreamsRequest {
   string owner_id = 1 [(validate.rules).string.uuid = true];
   int32 page_size = 2 [(validate.rules).int32.gt = 0];
   string page_token = 3;
 }
 
-message ListQueuesResponse {
-  repeated entities.v1.Queue queues = 1;
+message ListStreamsResponse {
+  repeated entities.v1.Stream streams = 1;
 }

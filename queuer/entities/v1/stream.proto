@@ -15,14 +15,14 @@ import "queuer/entities/v1/owner.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 
-message Queue {
+message Stream {
   string id = 1 [(validate.rules).string.uuid = true];
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 100}];
 }
 
-enum QueueState {
-  QUEUE_STATE_UNSPECIFIED = 0;
-  QUEUE_STATE_ACTIVE = 1;
-  QUEUE_STATE_INACTIVE = 2;
-  QUEUE_STATE_PAUSED = 3;
+enum StreamState {
+  STREAM_STATE_UNSPECIFIED = 0;
+  STREAM_STATE_ACTIVE = 1;
+  STREAM_STATE_INACTIVE = 2;
+  STREAM_STATE_PAUSED = 3;
 }

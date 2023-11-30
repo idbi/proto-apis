@@ -20,7 +20,7 @@ option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 service MessageService {
   rpc Confirm(ConfirmRequest) returns (ConfirmResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{queue_id}/messages/{message_id}:confirm"
+      post: "/v1/streams/{stream_id}/messages/{message_id}:confirm"
       body: "*"
     };
   }

@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "queuer/entities/v1/client.proto";
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/command.proto";
 import "queuer/entities/v1/stats.proto";
@@ -56,9 +56,9 @@ service ClientService {
     };
   }
 
-  rpc GetSubscribedQueues(GetSubscribedQueuesRequest) returns (GetSubscribedQueuesResponse) {
+  rpc GetSubscribedStreams(GetSubscribedStreamsRequest) returns (GetSubscribedStreamsResponse) {
     option (google.api.http) = {
-      get: "/v1/clients/{client_id}/queues"
+      get: "/v1/clients/{client_id}/streams"
     };
   }
 }

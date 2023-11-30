@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "queuer/entities/v1/client.proto";
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/command.proto";
 import "queuer/entities/v1/stats.proto";
@@ -61,10 +61,10 @@ message AckCommandResponse {
   bool success = 1;
 }
 
-message GetSubscribedQueuesRequest{
+message GetSubscribedStreamsRequest{
   string client_id = 1[(validate.rules).string.uuid = true];
 }
 
-message GetSubscribedQueuesResponse{
-  repeated entities.v1.Queue queues = 1;
+message GetSubscribedStreamsResponse{
+  repeated entities.v1.Stream streams = 1;
 }

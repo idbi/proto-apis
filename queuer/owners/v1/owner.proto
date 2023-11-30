@@ -10,7 +10,7 @@ import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
 import "queuer/entities/v1/owner.proto";
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 
 import "queuer/owners/v1/messages.proto";
 
@@ -28,13 +28,13 @@ service OwnerService {
 
   rpc GetOwner(GetOwnerRequest) returns (GetOwnerResponse){
     option (google.api.http) = {
-      get: "/v1/owners/{id}"
+      get: "/v1/owners/{owner_id}"
     };
   };
 
-  rpc ListQueues(ListQueuesRequest) returns (ListQueuesResponse) {
+  rpc ListStreams(ListStreamsRequest) returns (ListStreamsResponse) {
     option (google.api.http) = {
-      get: "/v1/queues"
+      get: "/v1/streams"
     };
   }
 }

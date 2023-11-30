@@ -16,7 +16,7 @@ import "queuer/entities/v1/message.proto";
 option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 
 message GetNextRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message GetNextResponse {
@@ -24,7 +24,7 @@ message GetNextResponse {
 }
 
 message ConfirmRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
   string message_id = 2 [(validate.rules).string.uuid = true];
 }
 

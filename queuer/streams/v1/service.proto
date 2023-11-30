@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package queuer.queues.v1;
+package queuer.streams.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -9,77 +9,77 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/stats.proto";
 
-import "queuer/queues/v1/messages.proto";
+import "queuer/streams/v1/messages.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/goproto/queuer/queues/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/streams/v1;v1";
 
-service QueueService {
-  rpc CreateQueue(CreateQueueRequest) returns (CreateQueueResponse) {
+service StreamService {
+  rpc CreateStream(CreateStreamRequest) returns (CreateStreamResponse) {
     option (google.api.http) = {
-      post: "/v1/queues"
+      post: "/v1/streams"
       body: "*"
     };
   }
-  rpc GetQueue(GetQueueRequest) returns (GetQueueResponse) {
+  rpc GetStream(GetStreamRequest) returns (GetStreamResponse) {
     option (google.api.http) = {
-      get: "/v1/queues/{queue_id}"
+      get: "/v1/streams/{stream_id}"
     };
   }
-  rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse) {
+  rpc DeleteStream(DeleteStreamRequest) returns (DeleteStreamResponse) {
     option (google.api.http) = {
-      delete: "/v1/queues/{queue_id}"
+      delete: "/v1/streams/{stream_id}"
     };
   }
 
-  rpc FlushQueue(FlushQueueRequest) returns (FlushQueueResponse) {
+  rpc FlushStream(FlushStreamRequest) returns (FlushStreamResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{queue_id}:flush"
+      post: "/v1/streams/{stream_id}:flush"
     };
   }
 
   rpc PublishMessage(PublishMessageRequest) returns (PublishMessageResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{queue_id}:publish"
+      post: "/v1/streams/{stream_id}:publish"
       body: "*"
     };
   }
 
   rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{queue_id}/messages"
+      post: "/v1/streams/{stream_id}/messages"
       body: "*"
     };
   }
 
   rpc UpdateState(UpdateStateRequest) returns (UpdateStateResponse) {
     option (google.api.http) = {
-      patch: "/v1/queues/{queue_id}:state"
+      patch: "/v1/streams/{stream_id}:state"
       body: "*"
     };
   }
 
   rpc GetClients(GetClientsRequest) returns (GetClientsResponse) {
     option (google.api.http) = {
-      get: "/v1/queues/{queue_id}/clients"
+      get: "/v1/streams/{stream_id}/clients"
     };
   }
 
   rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse) {
     option (google.api.http) = {
-      post: "/v1/queues/{queue_id}/clients"
+      post: "/v1/streams/{stream_id}/clients"
       body: "*"
     };
   }
 
   rpc UnregisterClient(UnregisterClientRequest) returns (UnregisterClientResponse) {
     option (google.api.http) = {
-      delete: "/v1/queues/{queue_id}/clients/{client_id}"
+      delete: "/v1/streams/{stream_id}/clients/{client_id}"
     };
   }
 }

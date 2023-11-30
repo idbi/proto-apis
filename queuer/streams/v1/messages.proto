@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package queuer.queues.v1;
+package queuer.streams.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -9,50 +9,50 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-import "queuer/entities/v1/queue.proto";
+import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/stats.proto";
 import "queuer/entities/v1/client.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/goproto/queuer/queues/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/streams/v1;v1";
 
-message CreateQueueRequest {
+message CreateStreamRequest {
   string name = 1 [(validate.rules).string.min_len = 3];
   string owner_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message CreateQueueResponse {
-  entities.v1.Queue queue = 1;
+message CreateStreamResponse {
+  entities.v1.Stream stream = 1;
 }
 
-message GetQueueRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+message GetStreamRequest {
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
-message GetQueueResponse {
-  entities.v1.Queue queue = 1;
+message GetStreamResponse {
+  entities.v1.Stream stream = 1;
 }
 
-message FlushQueueRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+message FlushStreamRequest {
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
-message FlushQueueResponse {
+message FlushStreamResponse {
   bool success = 1;
 }
 
-message DeleteQueueRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+message DeleteStreamRequest {
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
-message DeleteQueueResponse {
+message DeleteStreamResponse {
   bool success = 1;
 }
 
 message PublishMessageRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
   entities.v1.Message message = 2;
 }
 
@@ -61,7 +61,7 @@ message PublishMessageResponse {
 }
 
 message SubscribeRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message SubscribeResponse {
@@ -69,8 +69,8 @@ message SubscribeResponse {
 }
 
 message UpdateStateRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.QueueState state = 2;
+  string stream_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.StreamState state = 2;
 }
 
 message UpdateStateResponse {
@@ -78,7 +78,7 @@ message UpdateStateResponse {
 }
 
 message RegisterClientRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
   string client_id = 2 [(validate.rules).string.uuid = true];
 }
 
@@ -87,7 +87,7 @@ message RegisterClientResponse {
 }
 
 message GetClientsRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message GetClientsResponse {
@@ -95,7 +95,7 @@ message GetClientsResponse {
 }
 
 message UnregisterClientRequest {
-  string queue_id = 1 [(validate.rules).string.uuid = true];
+  string stream_id = 1 [(validate.rules).string.uuid = true];
   string client_id = 2 [(validate.rules).string.uuid = true];
 }
 
