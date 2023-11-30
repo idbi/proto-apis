@@ -18,7 +18,6 @@ option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
 message Queue {
   string id = 1 [(validate.rules).string = {min_len: 1, max_len: 100}];
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 100}];
-  Owner owner = 3;
 }
 
 enum QueueState {
