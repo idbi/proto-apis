@@ -19,19 +19,20 @@ import "queuer/entities/v1/stats.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
 
-message PublishConsumerStatsRequest {
+message SubscribeToCommandsRequest {
   string consumer_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.Stats stats = 2;
 }
 
-message PublishConsumerStatsResponse {
+message SubscribeToCommandsResponse {
+  entities.v1.Command command = 1;
+}
+
+message AckCommandRequest {
+  string consumer_id = 1 [(validate.rules).string.uuid = true];
+  string command_id = 2 [(validate.rules).string.uuid = true];
+  entities.v1.CommandStatus status = 3;
+}
+
+message AckCommandResponse {
   bool success = 1;
-}
-
-message GetSubscribedStreamsRequest{
-  string consumer_id = 1[(validate.rules).string.uuid = true];
-}
-
-message GetSubscribedStreamsResponse{
-  repeated entities.v1.Stream streams = 1;
 }

@@ -30,19 +30,6 @@ service ConsumerService {
     };
   }
 
-  rpc SubscribeToCommands(SubscribeToCommandsRequest) returns (stream SubscribeToCommandsResponse) {
-    option (google.api.http) = {
-      get: "/v1/consumers/{consumer_id}/commands"
-    };
-  }
-
-  rpc AckCommand(AckCommandRequest) returns (AckCommandResponse) {
-    option (google.api.http) = {
-      post: "/v1/consumers/{consumer_id}/commands/{command_id}:ack"
-      body: "*"
-    };
-  }
-
   rpc GetSubscribedStreams(GetSubscribedStreamsRequest) returns (GetSubscribedStreamsResponse) {
     option (google.api.http) = {
       get: "/v1/consumers/{consumer_id}/streams"

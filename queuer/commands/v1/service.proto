@@ -15,23 +15,27 @@ import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/command.proto";
 import "queuer/entities/v1/stats.proto";
 
+
+import "queuer/commands/v1/messages.proto";
+
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
 
-message PublishConsumerStatsRequest {
-  string consumer_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.Stats stats = 2;
+service ConsumerService {
+  rpc SubscribeToCommands(SubscribeToCommandsRequest) returns (stream SubscribeToCommandsResponse) {
+    option (google.api.http) = {
+      get: "/v1/commands"
+    };
+  }
+
+  rpc AckCommand(AckCommandRequest) returns (AckCommandResponse) {
+    option (google.api.http) = {
+      post: "/v1/{command_id}:ack"
+      body: "*"
+    };
+  }
+
 }
 
-message PublishConsumerStatsResponse {
-  bool success = 1;
-}
 
-message GetSubscribedStreamsRequest{
-  string consumer_id = 1[(validate.rules).string.uuid = true];
-}
-
-message GetSubscribedStreamsResponse{
-  repeated entities.v1.Stream streams = 1;
-}
