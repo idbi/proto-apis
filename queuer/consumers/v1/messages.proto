@@ -19,21 +19,6 @@ import "queuer/entities/v1/stats.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
 
-message RegisterConsumerRequest {
-  entities.v1.Consumer consumer = 1;
-  string owner_id = 2 [(validate.rules).string.uuid = true];
-}
-
-message RegisterConsumerResponse {
-  bool success = 1;
-}
-
-message GetConsumersRequest {}
-
-message GetConsumersResponse {
-  repeated entities.v1.Consumer consumers = 1;
-}
-
 message PublishConsumerStatsRequest {
   string consumer_id = 1 [(validate.rules).string.uuid = true];
   entities.v1.Stats stats = 2;

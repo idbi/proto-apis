@@ -11,6 +11,7 @@ import "validate/validate.proto";
 
 import "queuer/entities/v1/owner.proto";
 import "queuer/entities/v1/stream.proto";
+import "queuer/entities/v1/consumer.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
@@ -34,10 +35,25 @@ message GetOwnerResponse {
 
 message ListStreamsRequest {
   string owner_id = 1 [(validate.rules).string.uuid = true];
-  int32 page_size = 2 [(validate.rules).int32.gt = 0];
-  string page_token = 3;
 }
 
 message ListStreamsResponse {
   repeated entities.v1.Stream streams = 1;
+}
+
+message RegisterConsumerRequest {
+  string owner_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.Consumer consumer = 2;
+}
+
+message RegisterConsumerResponse {
+  bool success = 1;
+}
+
+message GetConsumersRequest {
+  string owner_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message GetConsumersResponse {
+  repeated entities.v1.Consumer consumers = 1;
 }

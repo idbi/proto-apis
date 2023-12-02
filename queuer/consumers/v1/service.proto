@@ -23,19 +23,6 @@ import "queuer/consumers/v1/messages.proto";
 option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
 
 service ConsumerService {
-  rpc RegisterConsumer(RegisterConsumerRequest) returns (RegisterConsumerResponse) {
-    option (google.api.http) = {
-      post: "/v1/consumers"
-      body: "*"
-    };
-  }
-
-  rpc GetConsumers(GetConsumersRequest) returns (GetConsumersResponse) {
-    option (google.api.http) = {
-      get: "/v1/consumers"
-    };
-  }
-
   rpc PublishConsumerStats(stream PublishConsumerStatsRequest) returns (PublishConsumerStatsResponse) {
     option (google.api.http) = {
       post: "/v1/consumers/{consumer_id}/stats"

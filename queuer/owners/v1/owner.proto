@@ -32,9 +32,22 @@ service OwnerService {
     };
   };
 
+  rpc RegisterConsumer(RegisterConsumerRequest) returns (RegisterConsumerResponse) {
+    option (google.api.http) = {
+      post: "/v1/owners/{owner_id}/consumers"
+      body: "*"
+    };
+  }
+
+  rpc GetConsumers(GetConsumersRequest) returns (GetConsumersResponse) {
+    option (google.api.http) = {
+      get: "/v1/owners/{owner_id}/consumers"
+    };
+  }
+
   rpc ListStreams(ListStreamsRequest) returns (ListStreamsResponse) {
     option (google.api.http) = {
-      get: "/v1/streams"
+      get: "/v1/owners/{owner_id}/streams"
     };
   }
 }
