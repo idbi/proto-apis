@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package queuer.consumers.v1;
+package queuer.commands.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -17,7 +17,7 @@ import "queuer/entities/v1/stats.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
+option go_package = "github.com/gsols/goproto/queuer/commands/v1;v1";
 
 message SubscribeToCommandsRequest {
   string consumer_id = 1 [(validate.rules).string.uuid = true];
