@@ -14,6 +14,7 @@ import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/command.proto";
 import "queuer/entities/v1/stats.proto";
+import "queuer/entities/v1/result.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
