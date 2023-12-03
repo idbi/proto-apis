@@ -13,6 +13,7 @@ import "queuer/entities/v1/stream.proto";
 import "queuer/entities/v1/message.proto";
 import "queuer/entities/v1/stats.proto";
 import "queuer/entities/v1/consumer.proto";
+import "queuer/entities/v1/result.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
@@ -40,7 +41,7 @@ message FlushStreamRequest {
 }
 
 message FlushStreamResponse {
-  bool success = 1;
+  entities.v1.Result result = 1;
 }
 
 message DeleteStreamRequest {
@@ -48,7 +49,7 @@ message DeleteStreamRequest {
 }
 
 message DeleteStreamResponse {
-  bool success = 1;
+  entities.v1.Result result = 1;
 }
 
 message PublishMessageRequest {
@@ -74,7 +75,7 @@ message UpdateStateRequest {
 }
 
 message UpdateStateResponse {
-  bool success = 1;
+  entities.v1.Result result = 1;
 }
 
 message RegisterConsumerRequest {
@@ -83,7 +84,7 @@ message RegisterConsumerRequest {
 }
 
 message RegisterConsumerResponse {
-  bool success = 1;
+  entities.v1.Result result = 1;
 }
 
 message GetConsumersRequest {
@@ -100,5 +101,5 @@ message UnregisterConsumerRequest {
 }
 
 message UnregisterConsumerResponse {
-  bool success = 1;
+  entities.v1.Result result = 1;
 }
