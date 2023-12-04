@@ -25,6 +25,6 @@ message Message {
 enum Priority {
   PRIORITY_UNSPECIFIED = 0;
   PRIORITY_LOW = 1;
-  PRIORITY_MEDIUM = 2;
+  PRIORITY_NORMAL = 2;
   PRIORITY_HIGH = 3;
 }
