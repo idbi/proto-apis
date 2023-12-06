@@ -16,19 +16,12 @@ import "queuer/entities/v1/result.proto";
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 
-message GetNextRequest {
-  string stream_id = 1 [(validate.rules).string.uuid = true];
-}
 
-message GetNextResponse {
-  entities.v1.Message message = 1;
-}
-
-message ConfirmRequest {
+message AcknowledgeRequest {
   string stream_id = 1 [(validate.rules).string.uuid = true];
   string message_id = 2 [(validate.rules).string.uuid = true];
 }
 
-message ConfirmResponse {
+message AcknowledgeResponse {
   entities.v1.Result result = 1;
 }

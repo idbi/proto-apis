@@ -18,7 +18,7 @@ import "queuer/messages/v1/messages.proto";
 option go_package = "github.com/gsols/goproto/queuer/messages/v1;v1";
 
 service MessageService {
-  rpc Confirm(ConfirmRequest) returns (ConfirmResponse) {
+  rpc Acknowledge(AcknowledgeRequest) returns (AcknowledgeResponse) {
     option (google.api.http) = {
       post: "/v1/messages/{message_id}:confirm"
       body: "*"
