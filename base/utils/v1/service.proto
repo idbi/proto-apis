@@ -14,6 +14,8 @@ import "base/utils/v1/messages.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/go-proto/utils/v1;v1";
+option php_namespace = "GSols\\PHPProto\\Utils\\v1";
+option php_metadata_namespace = "GSols\\PHPProto\\Utils\\v1\\Metadata";
 
 service Service {
   rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {

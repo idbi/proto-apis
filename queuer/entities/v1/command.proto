@@ -14,7 +14,8 @@ import "queuer/entities/v1/owner.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/entities/v1;v1";
-
+option php_namespace = "GSols\\PHPProto\\Queuer\\Entities\\v1";
+option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Entities\\v1\\Metadata";
 
 message Command {
   string id = 1 [(validate.rules).string.uuid = true];

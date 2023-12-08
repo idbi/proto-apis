@@ -21,6 +21,8 @@ import "queuer/consumers/v1/messages.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/consumers/v1;v1";
+option php_namespace = "GSols\\PHPProto\\Queuer\\Consumers\\v1";
+option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Consumers\\v1\\Metadata";
 
 service ConsumerService {
   rpc PublishConsumerStats(stream PublishConsumerStatsRequest) returns (PublishConsumerStatsResponse) {
