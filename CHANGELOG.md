@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.1.11](https://github.com/gsols/proto-apis/compare/v0.1.10...v0.1.11) (2023-12-08)
+
+
+### Features
+
+* add php options for compiler ([5d52000](https://github.com/gsols/proto-apis/commit/5d5200005d74cb55645be6cb69a21b0f3588bd1e))
+* change client to consumers ([3c1b8d7](https://github.com/gsols/proto-apis/commit/3c1b8d7db015289085bee0e046c507cb81788735))
+* change procedure name ([2b7c8f2](https://github.com/gsols/proto-apis/commit/2b7c8f20d6769ec5b221fcc98650555a75148d02))
+* change to result entity ([47b1d64](https://github.com/gsols/proto-apis/commit/47b1d645e44819d020b6a0853941f34087a31a14))
+* fix service and package name ([ae2f87e](https://github.com/gsols/proto-apis/commit/ae2f87e703dd7661ec249f53358c5190c7178cd5))
+* reorder procedures ([f221b7d](https://github.com/gsols/proto-apis/commit/f221b7d1246f6dc9823bfbb158672f717f4ddc05))
+* split commands defition ([0848455](https://github.com/gsols/proto-apis/commit/08484550baf830eb982400545e54ab1f38a245c4))
+
+
+### Bug Fixes
+
+* missing import ([8ccb629](https://github.com/gsols/proto-apis/commit/8ccb629af316ac8bd69ed1889904bdd0cfac0857))
+* missing options declaration ([707cb44](https://github.com/gsols/proto-apis/commit/707cb4452f7b3561f44e94f57c5bdc5bbea0bc2c))
+* package name ([f96153d](https://github.com/gsols/proto-apis/commit/f96153da466c3dd3047db4b615b78adfe30e1739))
+
 ## [0.1.10](https://github.com/gsols/proto-apis/compare/v0.1.9...v0.1.10) (2023-11-30)
 
 
