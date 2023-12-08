@@ -18,6 +18,8 @@ import "queuer/streams/v1/messages.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/gsols/goproto/queuer/streams/v1;v1";
+option php_namespace = "GSols\\PHPProto\\Queuer\\Streams\\v1";
+option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Streams\\v1\\Metadata";
 
 service StreamService {
   rpc CreateStream(CreateStreamRequest) returns (CreateStreamResponse) {
