@@ -23,17 +23,23 @@ option php_namespace = "GSols\\PHPProto\\Queuer\\Consumers\\v1";
 option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Consumers\\v1\\Metadata";
 
 message PublishConsumerStatsRequest {
-  string consumer_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.Stats stats = 2;
+  entities.v1.Stats stats = 1;
 }
 
 message PublishConsumerStatsResponse {
   entities.v1.Result result = 1;
 }
 
-message GetSubscribedStreamsRequest{
-  string consumer_id = 1[(validate.rules).string.uuid = true];
+message RegisterConsumerInfoRequest{
+  string consumer_id = 1 [(validate.rules).string.uuid = true];
+  entities.v1.ConsumerInfo consumer_info = 2;
 }
+
+message RegisterConsumerInfoResponse{
+  entities.v1.Result result = 1;
+}
+
+message GetSubscribedStreamsRequest{}
 
 message GetSubscribedStreamsResponse{
   repeated entities.v1.Stream streams = 1;

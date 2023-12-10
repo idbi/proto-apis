@@ -19,9 +19,11 @@ option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Entities\\v1\\Metadata
 
 message Consumer {
   string id = 1 [(validate.rules).string.uuid = true];
+}
 
-  HostInfo host = 2;
-  ProcessInfo process = 3;
+message ConsumerInfo{
+  HostInfo host = 1;
+  ProcessInfo process = 2;
 }
 
 message HostInfo {

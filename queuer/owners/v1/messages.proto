@@ -46,11 +46,11 @@ message ListStreamsResponse {
 
 message RegisterConsumerRequest {
   string owner_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.Consumer consumer = 2;
+  string consumer_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message RegisterConsumerResponse {
-  entities.v1.Result result = 1;
+  string issued_token = 1;
 }
 
 message GetConsumersRequest {

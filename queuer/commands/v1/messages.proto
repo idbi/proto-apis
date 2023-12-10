@@ -22,18 +22,14 @@ option go_package = "github.com/gsols/goproto/queuer/commands/v1;v1";
 option php_namespace = "GSols\\PHPProto\\Queuer\\Commands\\v1";
 option php_metadata_namespace = "GSols\\PHPProto\\Queuer\\Commands\\v1\\Metadata";
 
-message SubscribeToCommandsRequest {
-  string consumer_id = 1 [(validate.rules).string.uuid = true];
-}
+message SubscribeToCommandsRequest {}
 
 message SubscribeToCommandsResponse {
   entities.v1.Command command = 1;
 }
 
 message AckCommandRequest {
-  string consumer_id = 1 [(validate.rules).string.uuid = true];
-  string command_id = 2 [(validate.rules).string.uuid = true];
-  entities.v1.CommandStatus status = 3;
+  string command_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message AckCommandResponse {
