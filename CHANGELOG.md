@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.12](https://github.com/gsols/proto-apis/compare/v0.1.11...v0.1.12) (2023-12-10)
+
+
+### Features
+
+* split registration and issue token on new register ([84cb481](https://github.com/gsols/proto-apis/commit/84cb4818fee6e51869a8b8fd88147ffe131fb7e5))
+
 ## [0.1.11](https://github.com/gsols/proto-apis/compare/v0.1.10...v0.1.11) (2023-12-08)
 
 
