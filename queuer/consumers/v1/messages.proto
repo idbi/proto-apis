@@ -31,8 +31,7 @@ message PublishConsumerStatsResponse {
 }
 
 message RegisterConsumerInfoRequest{
-  string consumer_id = 1 [(validate.rules).string.uuid = true];
-  entities.v1.ConsumerInfo consumer_info = 2;
+  entities.v1.ConsumerInfo consumer_info = 1;
 }
 
 message RegisterConsumerInfoResponse{
