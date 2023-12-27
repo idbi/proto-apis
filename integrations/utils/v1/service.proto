@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package base.utils.v1;
+package integrations.utils.v1;
 
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
@@ -9,13 +9,13 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-import "base/utils/v1/messages.proto";
+import "integrations/utils/v1/messages.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/idbi/go-proto/base/utils/v1;v1";
-option php_namespace = "IDBI\\Proto\\Base\\Utils\\v1";
-option php_metadata_namespace = "IDBI\\Proto\\Base\\Utils\\v1\\Metadata";
+option go_package = "github.com/idbi/go-proto/integrations/utils/v1;v1";
+option php_namespace = "IDBI\\Proto\\Integrations\\Utils\\v1";
+option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Utils\\v1\\Metadata";
 
 service Service {
   rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {
