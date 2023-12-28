@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package integrations.owners.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "integrations/owners/v1/messages.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/idbi/go-proto/integrations/owners/v1;v1";
+option php_namespace = "IDBI\\Proto\\Integrations\\Owners\\v1";
+option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Owners\\v1\\Metadata";
+
+service Service {
+  rpc CreateOwner(CreateOwnerRequest) returns (CreateOwnerResponse) {
+    option (google.api.http) = {
+      post: "/v1/owners"
+      body: "*"
+    };
+  }
+}

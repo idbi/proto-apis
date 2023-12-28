@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package integrations.integrations.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "integrations/entities/v1/integration.proto";
+import "integrations/entities/v1/result.proto";
+import "integrations/entities/v1/owner.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/idbi/go-proto/integrations/integrations/v1;v1";
+option php_namespace = "IDBI\\Proto\\Integrations\\Integrations\\v1";
+option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Integrations\\v1\\Metadata";
+
+
+message GetIntegrationsRequest {
+  string owner_id = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+}
+
+message GetIntegrationsResponse {
+  entities.v1.Result result = 1;
+  repeated entities.v1.Integration integrations = 2;
+}
+
+message RegisterIntegrationRequest {
+  entities.v1.Owner owner = 1;
+  entities.v1.Integration integration = 2;
+}
+
+message RegisterIntegrationResponse {
+  entities.v1.Result result = 1;
+}
+
+message RegisterIntegrationParametersRequest
+{
+  entities.v1.Integration integration = 1;
+  repeated entities.v1.Parameter parameters = 2;
+}
+
+message RegisterIntegrationParametersResponse
+{
+  entities.v1.Result result = 1;
+}
+
+message GetIntegrationParametersRequest
+{
+  string integration_id = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+}
+
+message GetIntegrationParametersResponse
+{
+  entities.v1.Result result = 1;
+  repeated entities.v1.Parameter parameters = 2;
+}
+
+message RemoveIntegrationParametersRequest
+{
+  string integration_id = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  repeated string parameter_ids = 2 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+}
+
+message RemoveIntegrationParametersResponse
+{
+  entities.v1.Result result = 1;
+}

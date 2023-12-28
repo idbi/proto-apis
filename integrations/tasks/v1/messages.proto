@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package integrations.tasks.v1;
+
+import "google/api/annotations.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+import "integrations/entities/v1/owner.proto";
+import "integrations/entities/v1/result.proto";
+import "integrations/entities/v1/artifact.proto";
+import "integrations/entities/v1/task.proto";
+import "integrations/entities/v1/status.proto";
+import "integrations/entities/v1/integration.proto";
+
+// Defines the import path that should be used to import the generated package,
+// and the package name.
+option go_package = "github.com/idbi/go-proto/integrations/tasks/v1;v1";
+option php_namespace = "IDBI\\Proto\\Integrations\\Tasks\\v1";
+option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Tasks\\v1\\Metadata";
+
+message CreateTaskRequest {
+  string integration_id = 1;
+  repeated entities.v1.Parameter parameters = 2;
+}
+
+message CreateTaskResponse {
+  entities.v1.Result result = 1;
+  entities.v1.Task task = 2;
+}
+message GetTaskRequest {
+  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+}
+
+message GetTaskResponse {
+  entities.v1.Task task = 1;
+}
+
+message GetTaskStatusRequest {
+  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+}
+
+message GetTaskStatusResponse {
+  entities.v1.Task task = 1;
+  repeated entities.v1.Status statuses = 2;
+}
+
+message GetTaskResultRequest {
+  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+}
+
+message GetTaskResultResponse {
+  entities.v1.Task task = 1;
+  repeated entities.v1.Artifact artifacts = 2;
+}

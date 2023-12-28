@@ -9,9 +9,6 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "validate/validate.proto";
 
-import "integrations/entities/v1/owner.proto";
-
-
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
@@ -19,15 +16,8 @@ option go_package = "github.com/idbi/go-proto/integrations/entities/v1;v1";
 option php_namespace = "IDBI\\Proto\\Integrations\\Entities\\v1";
 option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Entities\\v1\\Metadata";
 
-message Integration {
-  string id = 1;
-  string name = 2;
-  Owner owner = 3;
-  google.protobuf.Timestamp created_at = 4;
+message Result {
+  bool success = 1;
+  string message = 2;
+  uint32 code = 3;
 }
-
-message Parameter {
-  string key = 1;
-  string value = 2;
-}
-
