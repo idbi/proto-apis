@@ -14,8 +14,8 @@ import "integrations/integrations/v1/messages.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/idbi/goproto/integrations/integrations/v1;v1";
-option php_namespace = "IDBI\\Proto\\Integrations\\Integrations\\v1";
-option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Integrations\\v1\\Metadata";
+option php_namespace = "IDBI\\PHPProto\\Integrations\\Integrations\\v1";
+option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Integrations\\v1\\Metadata";
 
 service Service {
   rpc GetIntegrations(GetIntegrationsRequest) returns (GetIntegrationsResponse) {

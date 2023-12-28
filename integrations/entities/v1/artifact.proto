@@ -15,8 +15,8 @@ import "integrations/entities/v1/task.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/idbi/goproto/integrations/entities/v1;v1";
-option php_namespace = "IDBI\\Proto\\Integrations\\Entities\\v1";
-option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Entities\\v1\\Metadata";
+option php_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1";
+option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Metadata";
 
 message Artifact {
   string id = 1;

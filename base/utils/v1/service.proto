@@ -14,8 +14,8 @@ import "base/utils/v1/messages.proto";
 // Defines the import path that should be used to import the generated package,
 // and the package name.
 option go_package = "github.com/idbi/goproto/base/utils/v1;v1";
-option php_namespace = "IDBI\\Proto\\Base\\Utils\\v1";
-option php_metadata_namespace = "IDBI\\Proto\\Base\\Utils\\v1\\Metadata";
+option php_namespace = "IDBI\\PHPProto\\Base\\Utils\\v1";
+option php_metadata_namespace = "IDBI\\PHPProto\\Base\\Utils\\v1\\Metadata";
 
 service Service {
   rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {
