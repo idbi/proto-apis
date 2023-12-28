@@ -13,7 +13,7 @@ import "integrations/utils/v1/messages.proto";
 
 // Defines the import path that should be used to import the generated package,
 // and the package name.
-option go_package = "github.com/idbi/go-proto/integrations/utils/v1;v1";
+option go_package = "github.com/idbi/goproto/integrations/utils/v1;v1";
 option php_namespace = "IDBI\\Proto\\Integrations\\Utils\\v1";
 option php_metadata_namespace = "IDBI\\Proto\\Integrations\\Utils\\v1\\Metadata";
 
