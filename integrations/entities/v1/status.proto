@@ -19,6 +19,6 @@ option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Met
 
 message Status {
   string id = 1;
-  string message = 2;
+  string name = 2;
   google.protobuf.Timestamp created_at = 5;
 }
