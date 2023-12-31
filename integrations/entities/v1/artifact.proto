@@ -20,7 +20,7 @@ option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Met
 
 message Artifact {
   string id = 1;
-  string artifact = 2;
+  string path = 2;
   Task task = 3;
   google.protobuf.Timestamp created_at = 5;
 }
