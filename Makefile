@@ -9,7 +9,7 @@ update:
 
 	for package in $(PACKAGES); do \
 		echo "Triggering deployment for $$package"; \
-		gh pr --repo $$package view create-pull-request/patch --web; \
+		gh api -X POST /repos/$$package/actions/workflows/20-generate.yml/dispatches -F ref=main; \
 	done
 
 	@echo "Done."
