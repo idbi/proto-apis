@@ -30,17 +30,18 @@ message GetIntegrationsResponse {
 }
 
 message RegisterIntegrationRequest {
-  entities.v1.Owner owner = 1;
-  entities.v1.Integration integration = 2;
+  string owner_id = 1 [(validate.rules).string.uuid = true];
+  string integration_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message RegisterIntegrationResponse {
   entities.v1.Result result = 1;
+  entities.v1.Integration integration = 2;
 }
 
 message RegisterIntegrationParametersRequest
 {
-  entities.v1.Integration integration = 1;
+  string integration_id = 1 [(validate.rules).string.uuid = true];
   repeated entities.v1.Parameter parameters = 2;
 }
 
@@ -51,7 +52,7 @@ message RegisterIntegrationParametersResponse
 
 message GetIntegrationParametersRequest
 {
-  string integration_id = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string integration_id = 1 [(validate.rules).string.uuid = true];
 }
 
 message GetIntegrationParametersResponse
@@ -62,7 +63,7 @@ message GetIntegrationParametersResponse
 
 message RemoveIntegrationParametersRequest
 {
-  string integration_id = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string integration_id = 1 [(validate.rules).string.uuid = true];
   repeated string parameter_ids = 2 [(validate.rules).repeated = {min_items: 1, max_items: 100, unique: true, items: {string: {min_len: 1, max_len: 255, uuid: true}}}];
 }
 

@@ -20,14 +20,15 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Metadata";
 
 message Integration {
-  string id = 1;
-  string name = 2;
+  string id = 1 [(validate.rules).string.uuid = true];
+  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
   Owner owner = 3;
   google.protobuf.Timestamp created_at = 4;
 }
 
 message Parameter {
-  string key = 1;
-  string value = 2;
+  string id = 1 [(validate.rules).string.uuid = true];
+  string key = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string value = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
 }
 
