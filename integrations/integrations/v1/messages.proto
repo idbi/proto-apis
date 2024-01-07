@@ -42,7 +42,7 @@ message RegisterIntegrationResponse {
 message RegisterIntegrationPropertiesRequest
 {
   string integration_id = 1 [(validate.rules).string.uuid = true];
-  repeated entities.v1.Parameter parameters = 2;
+  repeated entities.v1.Property properties = 2;
 }
 
 message RegisterIntegrationPropertiesResponse
@@ -58,7 +58,7 @@ message GetIntegrationPropertiesRequest
 message GetIntegrationPropertiesResponse
 {
   entities.v1.Result result = 1;
-  repeated entities.v1.Parameter parameters = 2;
+  repeated entities.v1.Property properties = 2;
 }
 
 message RemoveIntegrationPropertiesRequest
