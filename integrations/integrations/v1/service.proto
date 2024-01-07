@@ -33,20 +33,20 @@ service Service {
 
   rpc RegisterIntegrationProperties(RegisterIntegrationPropertiesRequest) returns (RegisterIntegrationPropertiesResponse) {
     option (google.api.http) = {
-      post: "/v1/integrations/{integration_id}/parameters"
+      post: "/v1/integrations/{integration_id}/properties"
       body: "*"
     };
   }
 
   rpc GetIntegrationProperties(GetIntegrationPropertiesRequest) returns (GetIntegrationPropertiesResponse) {
     option (google.api.http) = {
-      get: "/v1/integrations/{integration_id}/parameters"
+      get: "/v1/integrations/{integration_id}/properties"
     };
   }
 
   rpc RemoveIntegrationProperties(RemoveIntegrationPropertiesRequest) returns (RemoveIntegrationPropertiesResponse) {
     option (google.api.http) = {
-      delete: "/v1/integrations/{integration_id}/parameters/{parameter_id}"
+      delete: "/v1/integrations/{integration_id}/properties/{property_id}"
     };
   }
 }

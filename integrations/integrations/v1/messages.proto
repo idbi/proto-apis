@@ -64,7 +64,7 @@ message GetIntegrationPropertiesResponse
 message RemoveIntegrationPropertiesRequest
 {
   string integration_id = 1 [(validate.rules).string.uuid = true];
-  repeated string parameter_ids = 2 [(validate.rules).repeated = {min_items: 1, max_items: 100, unique: true, items: {string: {ignore_empty: true, uuid: true}}}];
+  repeated string property_ids = 2 [(validate.rules).repeated = {min_items: 1, max_items: 100, unique: true, items: {string: {ignore_empty: true, uuid: true}}}];
 }
 
 message RemoveIntegrationPropertiesResponse
