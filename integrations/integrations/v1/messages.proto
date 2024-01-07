@@ -39,35 +39,35 @@ message RegisterIntegrationResponse {
   entities.v1.Integration integration = 2;
 }
 
-message RegisterIntegrationParametersRequest
+message RegisterIntegrationPropertiesRequest
 {
   string integration_id = 1 [(validate.rules).string.uuid = true];
   repeated entities.v1.Parameter parameters = 2;
 }
 
-message RegisterIntegrationParametersResponse
+message RegisterIntegrationPropertiesResponse
 {
   entities.v1.Result result = 1;
 }
 
-message GetIntegrationParametersRequest
+message GetIntegrationPropertiesRequest
 {
   string integration_id = 1 [(validate.rules).string.uuid = true];
 }
 
-message GetIntegrationParametersResponse
+message GetIntegrationPropertiesResponse
 {
   entities.v1.Result result = 1;
   repeated entities.v1.Parameter parameters = 2;
 }
 
-message RemoveIntegrationParametersRequest
+message RemoveIntegrationPropertiesRequest
 {
   string integration_id = 1 [(validate.rules).string.uuid = true];
-  repeated string parameter_ids = 2 [(validate.rules).repeated = {min_items: 1, max_items: 100, unique: true, items: {string: {min_len: 1, max_len: 255, uuid: true}}}];
+  repeated string parameter_ids = 2 [(validate.rules).repeated = {min_items: 1, max_items: 100, unique: true, items: {string: {ignore_empty: true, uuid: true}}}];
 }
 
-message RemoveIntegrationParametersResponse
+message RemoveIntegrationPropertiesResponse
 {
   entities.v1.Result result = 1;
 }

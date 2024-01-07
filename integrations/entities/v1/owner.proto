@@ -18,7 +18,7 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Metadata";
 
 message Owner {
-  string id = 1;
-  string name = 2;
-  google.protobuf.Timestamp created_at = 5;
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  google.protobuf.Timestamp created_at = 3;
 }

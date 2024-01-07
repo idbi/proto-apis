@@ -20,8 +20,8 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Metadata";
 
 message Task {
-  string id = 1;
-  string name = 2;
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string name = 2 [(validate.rules).string = {min_len: 3, max_len: 255}];
   Status status = 3;
   Owner owner = 4;
   google.protobuf.Timestamp created_at = 5;

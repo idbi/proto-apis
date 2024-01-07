@@ -19,7 +19,7 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Metadata";
 
 message Artifact {
-  string id = 1;
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   string path = 2;
   google.protobuf.Timestamp created_at = 3;
 }

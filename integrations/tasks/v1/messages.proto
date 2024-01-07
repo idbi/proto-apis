@@ -23,7 +23,7 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Tasks\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Tasks\\v1\\Metadata";
 
 message CreateTaskRequest {
-  string integration_id = 1;
+  string integration_id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   repeated entities.v1.Parameter parameters = 2;
 }
 
@@ -32,7 +32,7 @@ message CreateTaskResponse {
   entities.v1.Task task = 2;
 }
 message GetTaskRequest {
-  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
 }
 
 message GetTaskResponse {
@@ -40,7 +40,7 @@ message GetTaskResponse {
 }
 
 message GetTaskStatusRequest {
-  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
 }
 
 message GetTaskStatusResponse {
@@ -49,7 +49,7 @@ message GetTaskStatusResponse {
 }
 
 message GetTaskResultRequest {
-  string id = 1 [(validate.rules).string = {min_len: 1, max_len: 255, uuid: true}];
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
 }
 
 message GetTaskResultResponse {

@@ -31,20 +31,20 @@ service Service {
     };
   }
 
-  rpc RegisterIntegrationParameters(RegisterIntegrationParametersRequest) returns (RegisterIntegrationParametersResponse) {
+  rpc RegisterIntegrationProperties(RegisterIntegrationPropertiesRequest) returns (RegisterIntegrationPropertiesResponse) {
     option (google.api.http) = {
       post: "/v1/integrations/{integration_id}/parameters"
       body: "*"
     };
   }
 
-  rpc GetIntegrationParameters(GetIntegrationParametersRequest) returns (GetIntegrationParametersResponse) {
+  rpc GetIntegrationProperties(GetIntegrationPropertiesRequest) returns (GetIntegrationPropertiesResponse) {
     option (google.api.http) = {
       get: "/v1/integrations/{integration_id}/parameters"
     };
   }
 
-  rpc RemoveIntegrationParameters(RemoveIntegrationParametersRequest) returns (RemoveIntegrationParametersResponse) {
+  rpc RemoveIntegrationProperties(RemoveIntegrationPropertiesRequest) returns (RemoveIntegrationPropertiesResponse) {
     option (google.api.http) = {
       delete: "/v1/integrations/{integration_id}/parameters/{parameter_id}"
     };
