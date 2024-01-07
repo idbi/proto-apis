@@ -23,7 +23,7 @@ deploy:
 	done
 
 
-tag: deploy
+tag:
 	@echo "Tagging new versions of packages"
 
 	for package in $(PACKAGES); do \
