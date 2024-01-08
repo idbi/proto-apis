@@ -26,6 +26,13 @@ message Integration {
   google.protobuf.Timestamp created_at = 4;
 }
 
+message IntegrationType {
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string description = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  google.protobuf.Timestamp created_at = 4;
+}
+
 message Property {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   string key = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];

@@ -31,7 +31,7 @@ message GetIntegrationsResponse {
 
 message RegisterIntegrationRequest {
   string owner_id = 1 [(validate.rules).string.uuid = true];
-  string integration_id = 2 [(validate.rules).string.uuid = true];
+  string type_id = 2 [(validate.rules).string.uuid = true];
 }
 
 message RegisterIntegrationResponse {
