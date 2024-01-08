@@ -22,8 +22,9 @@ option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Met
 message Integration {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
-  Owner owner = 3;
-  google.protobuf.Timestamp created_at = 4;
+  string description = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  Owner owner = 4;
+  google.protobuf.Timestamp created_at = 5;
 }
 
 message IntegrationType {
