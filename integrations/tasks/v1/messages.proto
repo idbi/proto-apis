@@ -36,8 +36,9 @@ message GetTaskRequest {
 }
 
 message GetTaskResponse {
-  entities.v1.Task task = 1;
-  repeated entities.v1.TaskProperty properties = 2;
+  entities.v1.Result result = 1;
+  entities.v1.Task task = 2;
+  repeated entities.v1.TaskProperty properties = 3;
 }
 
 message GetTaskStatusRequest {
@@ -45,8 +46,9 @@ message GetTaskStatusRequest {
 }
 
 message GetTaskStatusResponse {
-  entities.v1.Task task = 1;
-  repeated entities.v1.Status statuses = 2;
+  entities.v1.Result result = 1;
+  entities.v1.Task task = 2;
+  repeated entities.v1.Status statuses = 3;
 }
 
 message GetTaskResultRequest {
@@ -54,6 +56,7 @@ message GetTaskResultRequest {
 }
 
 message GetTaskResultResponse {
-  entities.v1.Task task = 1;
-  repeated entities.v1.Artifact artifacts = 2;
+  entities.v1.Result result = 1;
+  entities.v1.Task task = 2;
+  repeated entities.v1.Artifact artifacts = 3;
 }
