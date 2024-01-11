@@ -24,7 +24,7 @@ option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Tasks\\v1\\Metada
 
 message CreateTaskRequest {
   string integration_id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
-  repeated entities.v1.IntegrationProperty properties = 2;
+  repeated entities.v1.TaskProperty properties = 2;
 }
 
 message CreateTaskResponse {
