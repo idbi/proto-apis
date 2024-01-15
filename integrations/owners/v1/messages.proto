@@ -20,14 +20,14 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Owners\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Owners\\v1\\Metadata";
 
 message CreateOwnerRequest {
-  string name = 1 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
 }
 
 message CreateOwnerResponse {
   entities.v1.Result result = 1;
   entities.v1.Owner owner = 2;
 }
-
 
 message GetOwnerRequest {
   string id = 1 [(validate.rules).string = {uuid: true}];
