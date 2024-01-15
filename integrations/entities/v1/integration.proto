@@ -23,9 +23,10 @@ message Integration {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
   string description = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
-  IntegrationType type = 4;
-  Owner owner = 5;
-  google.protobuf.Timestamp created_at = 6;
+  bool is_enabled = 4;
+  string type_id = 5 [(validate.rules).string = {uuid: true}];
+  Owner owner = 6;
+  google.protobuf.Timestamp created_at = 7;
 }
 
 message IntegrationType {
