@@ -28,3 +28,12 @@ message CreateOwnerResponse {
   entities.v1.Owner owner = 2;
 }
 
+
+message GetOwnerRequest {
+  string id = 1 [(validate.rules).string = {uuid: true}];
+}
+
+message GetOwnerResponse {
+  entities.v1.Result result = 1;
+  entities.v1.Owner owner = 2;
+}

@@ -23,7 +23,7 @@ option php_namespace = "IDBI\\PHPProto\\Integrations\\Tasks\\v1";
 option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Tasks\\v1\\Metadata";
 
 message CreateTaskRequest {
-  string integration_id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string integration_id = 1 [(validate.rules).string = {uuid: true}];
   repeated entities.v1.TaskProperty properties = 2;
 }
 
@@ -33,7 +33,7 @@ message CreateTaskResponse {
 }
 
 message GetTasksRequest {
-  string integration_id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string integration_id = 1 [(validate.rules).string = {uuid: true}];
   int32 page_size = 2 [(validate.rules).int32 = {gte: 15, lte: 100}];
   string page_token = 3 [(validate.rules).string = {min_len: 1, max_len: 255, ignore_empty: true}];
 }
@@ -45,7 +45,7 @@ message GetTasksResponse {
 }
 
 message GetTaskRequest {
-  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string id = 1 [(validate.rules).string = {uuid: true}];
 }
 
 message GetTaskResponse {
@@ -55,7 +55,7 @@ message GetTaskResponse {
 }
 
 message GetTaskStatusRequest {
-  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string id = 1 [(validate.rules).string = {uuid: true}];
 }
 
 message GetTaskStatusResponse {
@@ -65,7 +65,7 @@ message GetTaskStatusResponse {
 }
 
 message GetTaskResultRequest {
-  string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  string id = 1 [(validate.rules).string = {uuid: true}];
 }
 
 message GetTaskResultResponse {

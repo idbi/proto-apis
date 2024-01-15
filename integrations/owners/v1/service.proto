@@ -24,4 +24,10 @@ service Service {
       body: "*"
     };
   }
+
+  rpc GetOwner(GetOwnerRequest) returns (GetOwnerResponse) {
+    option (google.api.http) = {
+      get: "/v1/owners/{id}"
+    };
+  }
 }
