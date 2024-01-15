@@ -31,6 +31,19 @@ message CreateTaskResponse {
   entities.v1.Result result = 1;
   entities.v1.Task task = 2;
 }
+
+message GetTasksRequest {
+  string integration_id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
+  int32 page_size = 2 [(validate.rules).int32 = {gte: 15, lte: 100}];
+  string page_token = 3 [(validate.rules).string = {min_len: 1, max_len: 255, ignore_empty: true}];
+}
+
+message GetTasksResponse {
+  entities.v1.Result result = 1;
+  repeated entities.v1.Task tasks = 2;
+  string next_page_token = 3 [(validate.rules).string = {min_len: 1, max_len: 255, ignore_empty: true}];
+}
+
 message GetTaskRequest {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
 }
