@@ -38,7 +38,9 @@ message IntegrationType {
 
 message IntegrationProperty {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
-  string key = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
-  string value = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string name = 2 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string key = 3 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  string value = 4 [(validate.rules).string = {min_len: 1, max_len: 255}];
+  bool is_editable = 5;
 }
 

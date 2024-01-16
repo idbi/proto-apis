@@ -42,4 +42,4 @@ tag:
 	@echo "Waiting for 10 seconds..."
 	sleep 10
 
-all: update .WAIT_30 deploy .WAIT_10 tag
+all: update .WAIT_60 deploy .WAIT_10 tag
