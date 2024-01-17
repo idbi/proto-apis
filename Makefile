@@ -35,11 +35,14 @@ tag:
 
 .PHONY: update deploy tag
 
+.WAIT_90:
+	@echo "Waiting for 90 seconds..."
+	sleep 90
 .WAIT_60:
 	@echo "Waiting for 60 seconds..."
 	sleep 60
-.WAIT_10:
+.WAIT_30:
 	@echo "Waiting for 10 seconds..."
-	sleep 10
+	sleep 30
 
-all: update .WAIT_60 deploy .WAIT_10 tag
+all: update .WAIT_90 deploy .WAIT_30 tag
