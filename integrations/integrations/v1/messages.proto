@@ -75,7 +75,7 @@ message UpdateIntegrationPropertyResponse
 message RemoveIntegrationPropertyRequest
 {
   string integration_id = 1 [(validate.rules).string = {uuid:true}];
-  string property_ids = 2 [(validate.rules).string = {uuid:true}];
+  string property_id = 2 [(validate.rules).string = {uuid:true}];
 }
 
 message RemoveIntegrationPropertyResponse
