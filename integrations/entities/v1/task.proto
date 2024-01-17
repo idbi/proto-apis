@@ -22,8 +22,9 @@ option php_metadata_namespace = "IDBI\\PHPProto\\Integrations\\Entities\\v1\\Met
 message Task {
   string id = 1 [(validate.rules).string = {uuid: true, ignore_empty: true}];
   string name = 2 [(validate.rules).string = {min_len: 3, max_len: 255}];
-  Status status = 3;
-  google.protobuf.Timestamp created_at = 4;
+  uint32 retries = 3;
+  Status status = 4;
+  google.protobuf.Timestamp created_at = 5;
 }
 
 message TaskProperty {
