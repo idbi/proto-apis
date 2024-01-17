@@ -44,7 +44,14 @@ service Service {
     };
   }
 
-  rpc RemoveIntegrationProperties(RemoveIntegrationPropertiesRequest) returns (RemoveIntegrationPropertiesResponse) {
+  rpc UpdateIntegrationProperty(UpdateIntegrationPropertyRequest) returns (UpdateIntegrationPropertyResponse) {
+    option (google.api.http) = {
+      patch: "/v1/integrations/{integration_id}/properties/{property_id}"
+      body: "*"
+    };
+  }
+
+  rpc RemoveIntegrationProperty(RemoveIntegrationPropertyRequest) returns (RemoveIntegrationPropertyResponse) {
     option (google.api.http) = {
       delete: "/v1/integrations/{integration_id}/properties/{property_id}"
     };
