@@ -25,6 +25,13 @@ service Service {
     };
   }
 
+  rpc RetryTask(RetryTaskRequest) returns (RetryTaskResponse) {
+    option (google.api.http) = {
+      post: "/v1/tasks/{id}:retry"
+      body: "*"
+    };
+  }
+
   rpc GetTasks(GetTasksRequest) returns (GetTasksResponse) {
     option (google.api.http) = {
       get: "/v1/tasks"

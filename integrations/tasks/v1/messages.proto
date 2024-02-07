@@ -32,6 +32,15 @@ message CreateTaskResponse {
   entities.v1.Task task = 2;
 }
 
+message RetryTaskRequest {
+  string id = 1 [(validate.rules).string = {uuid: true}];
+}
+
+message RetryTaskResponse {
+  entities.v1.Result result = 1;
+  entities.v1.Task task = 2;
+}
+
 message GetTasksRequest {
   string integration_id = 1 [(validate.rules).string = {uuid: true}];
   uint32 page_size = 2 [(validate.rules).uint32 = {gte: 15, lte: 100}];
